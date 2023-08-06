@@ -11,7 +11,7 @@ function StartGameScreen() {
     }
 
     function numberInputHandler(inputText) {
-        setEnteredNumber(enteredNumber)
+        setEnteredNumber(inputText)
     }
 
     function confirmInputHandler() {
