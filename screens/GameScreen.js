@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from "react-native"
+import { View, Text, StyleSheet, Alert } from "react-native"
 import Title from "../components/ui/Title"
 import { useState } from "react"
 import NumberContainer from "../components/game/NumberContainer"
@@ -23,6 +23,19 @@ function GameScreen({userNumber}) {
     const[currentGuess, setCurrentGuess] = useState(initialGuess) 
 
     function nextGuessHandler(direction) {
+        if (
+            (direction === 'lower' && currentGuess < userNumber) || 
+            (direction === 'greater' && currentGuess > userNumber)
+        ) {
+            Alert.alert(
+                "Don't lie!", 
+                "You know that this is wrong ...",
+                [
+                    { text: 'Sorry', style: 'cancel'}
+                ]
+            )
+            return
+        } 
         if (direction === 'lower') {
             maxBoundary = currentGuess
         } else {
