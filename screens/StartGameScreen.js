@@ -4,6 +4,7 @@ import PrimaryButton from "../components/ui/PrimaryButtons"
 import Colors from '../const/colors'
 import Title from '../components/ui/Title'
 import InstructionText from '../components/ui/InstructionText'
+import Card from '../components/ui/Card'
 
 
 function StartGameScreen({onPickNumber}) {
