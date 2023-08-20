@@ -1,4 +1,4 @@
-export { View, Image, StyleSheet } from 'react-native'
+import { View, Image, StyleSheet } from "react-native"
 import Title from '../components/ui/Title'
 import Colors from '../const/colors'
 
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: 24,
         justifyContent: 'center',
-        alignItems: 'center',
+        alignItems: 'center'
     },
     imageContainer: {
         width: 300,
