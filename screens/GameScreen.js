@@ -79,7 +79,7 @@ function GameScreen({userNumber, onGameOver}) {
                 </View>
             </View>
         </Card>
-        <View>
+        <View style={styles.listContainer}>
             <FlatList
                 data={guessRounds}
                 renderItem={(itemData) => <GuessLogItem roundNumber={guessRoundListLength - itemData.index} guess={itemData.item}/>}
@@ -104,5 +104,9 @@ const styles = StyleSheet.create({
     },
     buttonContainer : {
         flex: 1
+    },
+    listContainer: {
+        flex: 1,
+        padding: 16
     }
 })
