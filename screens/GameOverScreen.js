@@ -1,26 +1,46 @@
-import { View, Image, StyleSheet, Dimensions } from "react-native"
+import { View, Image, StyleSheet, ScrollView, useWindowDimensions } from "react-native"
 import Title from '../components/ui/Title'
 import Colors from '../const/colors'
 
 function GameOverScreen({roundsNumber, userNmber, onRestart, onStartNewGame}) {
-    return <View style={styles.rootContainer}>
-        <View style={styles.imageContainer}>
-            <Title>GAME OVER!</Title>
-            <Image 
-                style={styles.image}
-                source={require('../assets/images/success.png')}
-            />
+
+    const { width , height } = useWindowDimensions()
+
+    let imageSize = 300
+    if (width < 380) {
+        imageSize = 150
+    }
+
+    if (height < 400) {
+        imageSize = 80
+    }
+
+    const imageStyle = {
+        width : imageSize,
+        height : imageSize,
+        borderRadius : imageSize / 2
+    }
+    return <ScrollView style={styles.screen}>
+        <View style={styles.rootContainer}>
+            <View style={styles.imageContainer}>
+                <Title>GAME OVER!</Title>
+                <Image 
+                    style={[styles.image, imageStyle ]}
+                    source={require('../assets/images/success.png')}
+                />
+            </View>
+            <Text style={styles.summaryText}>Your phone needed <Text style={styles.highlight}>{roundsNumber}</Text> rounds to guess the number<Text style={styles.highlight}>{userNmber}</Text>.</Text>
+            <PrimaryButton onPress={onStartNewGame}>Start New Game</PrimaryButton>
         </View>
-        <Text style={styles.summaryText}>Your phone needed <Text style={styles.highlight}>{roundsNumber}</Text> rounds to guess the number<Text style={styles.highlight}>{userNmber}</Text>.</Text>
-        <PrimaryButton onPress={onStartNewGame}>Start New Game</PrimaryButton>
-    </View>
+    </ScrollView>
 }
 
 export default GameOverScreen
 
-const deviceWidth = Dimensions.get('window').width
-
 const styles = StyleSheet.create({
+    screen: {
+        flex: 1,
+    },
     rootContainer: {
         flex: 1,
         padding: 24,
